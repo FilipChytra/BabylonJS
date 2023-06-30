@@ -1,0 +1,19 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+}
+
+#renderCanvas {
+    width: 50%;
+    height: 100%;
+    touch-action: none;
+}
+
+
+#Babylon_website {
+    max-height: 100%;
+    background-image: url("../assets/Babylon_website.png");
+    background-size:cover;
+
+}

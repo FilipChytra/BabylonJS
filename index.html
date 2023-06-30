@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Babylon.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+    <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+    <script src="https://preview.babylonjs.com/ammo.js"></script>
+    <script src="https://preview.babylonjs.com/cannon.js"></script>
+    <script src="https://preview.babylonjs.com/Oimo.js"></script>
+    <script src="https://preview.babylonjs.com/earcut.min.js"></script>
+    <script src="https://preview.babylonjs.com/babylon.js"></script>
+    <script src="https://preview.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+    <script src="https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+    <script src="https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+    <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+    <script src="https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+    <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
+    <script src="https://preview.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+
+    <link href="./prism/prism.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./UIKit/css/uikit.min.css" />
+    <script src="./UIKit/js/uikit.min.js"></script>
+    <script src="./UIKit/js/uikit-icons.min.js"></script>
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body>
+    
+    <div id="content" class="uk-container uk-container-large" style="background-color: white;" >
+        <header uk-sticky="start: 200; animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-dark">
+            <nav class="uk-navbar-container uk-box-shadow-large">
+                <div class="uk-container">
+                    <div uk-navbar>
+                        <div class="uk-navbar-left">
+                            <a class="uk-navbar-item uk-logo" href="#" aria-label="Back to Home">Babylon.js</a>
+                        </div>
+                        <div class="uk-navbar-right">
+                            <ul class="uk-navbar-nav">
+                                <li>
+                                    <a href="./implementace.html">Implementace</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="./implementace.html?id=babylonjs-viewer">Babylon.js Viewer</a></li>
+                                            <li><a href="./implementace.html?id=babylonjs-playground">Babylon.js Playground</a></li>
+                                            <li><a href="./implementace.html?id=babylonjs-balicky">Babylon.js Balíčky</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Základní scéna
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Mesh
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Materiály a textury
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Animace
+                                    </a>
+                                </li>
+                            </ul>           
+                        </div>
+            
+                    </div>
+                </nav>
+        </header>
+        <main class="uk-container">
+            <div id="popis" class="uk-child-width-1-2@m" uk-grid >
+                <div class="uk-flex uk-flex-column uk-flex-center">
+                    <article class="uk-article uk-padding-small uk-height-large">
+
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Babylon.js</a></h2>
+                    
+                        <p class="uk-article-meta"></p>
+                    
+                        <p class="uk-text-lead">Babylon.js je oblíbený mezi vývojáři her, designéry interaktivních médií a architekty, kteří chtějí prezentovat své projekty ve 3D prostředí. Lze jej používat na různých platformách, včetně stolních počítačů a mobilních zařízení, a podporuje různé formáty souborů pro import 3D modelů a prostředků.</p>
+                    
+                    </article>
+                </div>
+                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/Babylon_website.png');">
+                    <div class="uk-overlay-primary uk-position-cover"></div>
+                    <div class="uk-overlay uk-position-center"><button class="uk-button uk-button-default uk-light"><a href="https://www.babylonjs.com/" target="_blank">Přejít na oficiální stránky</a></button></div>
+
+                </div>
+                
+            </div>
+            <div class="uk-section uk-section-muted">
+                <h3 class="uk-heading-small uk-text-center uk-margin-large-bottom">Implementace</h3>
+                <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body uk-card-large">
+                            <div class="uk-card-badge uk-label-success">1. Postup</div>
+                            <article class="uk-article">
+                                <p class="uk-article-meta uk-margin-remove-bottom">Babylon.js</p>
+                                <h4 class="uk-article-title uk-margin-remove-top">Viewer</h4>
+    
+                                <p>Přidání Babylon Viewer na stránky je nejsnadnější způsob jak přidat a zobrazit 3D obsah na webové stránce.</p>
+                                <div>
+                                    <a class="uk-button uk-button-text" href="./implementace.html?id=babylonjs-viewer">Přejít na návod</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body uk-box-shadow-large  uk-card-large">
+                            <div class="uk-card-badge uk-label-warning">2. Postup</div>
+                            <article class="uk-article">
+                                <p class="uk-article-meta uk-margin-remove-bottom ">Babylon.js</p>
+                                <h4 class="uk-article-title uk-margin-remove-top">Playground</h4>
+    
+                                <p>Přidání Babylon Viewer na stránky je nejsnadnější způsob jak přiidání Babylon Viewer na stránky je nejsnadnější způsob jak přidat a zobrazit 3D dat a zobrazit 3D obsah na webové stránce.</p>
+                                <div>
+                                    <a class="uk-button uk-button-text" href="./implementace.html?id=babylonjs-playground">Přejít na návod</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="uk-card uk-card-default uk-card-body uk-box-shadow-large  uk-card-large">
+                            <div class="uk-card-badge uk-label-danger">3. Postup</div>
+                            <article class="uk-article">
+                                <p class="uk-article-meta uk-margin-remove-bottom">Babylon.js</p>
+                                <h4 class="uk-article-title uk-margin-remove-top">Balíčky</h4>
+    
+                                <p>Přidání Babylon Viewer na stránky je nejsnadnější způsob jak přidat a zobrazit 3D obsah na webové stránce.</p>
+                                <div>
+                                    <a class="uk-button uk-button-text" href="./implementace.html?id=babylonjs-balicky">Přejít na návod</a>
+                                </div>
+                            </article>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+
+
+            <div id="základníScéna" class="uk-child-width-1-2@m" uk-grid >
+                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/zakladniScena.png');"></div>
+                <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
+                    <article class="uk-article uk-padding-small">
+
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Základní scéna</a></h2>
+                    
+                        <p class="uk-article-meta"><a href="#">Nastavení</a> | <a href="./Implementace/babylonViewer.html?id=zakladniScena">Kamery</a> | <a href="#">Světla</a> | <a href="#">základní prostředí</a></p>
+                    
+                        <p class="uk-text-lead">Pokud se rozhodnete pro druhý, či třetí postup implementace, je potřeba jako první krok vytvořit scénu a nastavit několik základních prvků, bez kterých se žádná scéna neobejde.</p>
+
+                        <p>V této části se dozvíte jak </p>
+                        
+                        <div class="uk-grid-small uk-child-width-auto" uk-grid>
+                            <div>
+                                <a class="uk-button uk-button-text" href="./zakladni-scena.html">Přejít na návod</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>                
+            </div>
+
+
+            <diV class="uk-child-width-1-2@m" uk-grid >
+                <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
+                    <article class="uk-article uk-padding-small">
+
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Mesh / Polygonové sítě</a></h2>
+                    
+                        <p class="uk-article-meta"><a href="#">Tvorba základních objektů</a> | <a href="#">Manipulace</a> | <a href="#">Import modelů</a></p>
+                    
+                        <p class="uk-text-lead">Mesh je kolekce vrcholů, hran a ploch, které definují tvar modelu. Třída Mesh v Babylon.js poskytuje různé metody a vlastnosti pro manipulaci se sítí. Krom tvorby základních objektů, lze importovat složitější modely z externích souborů.</p>
+                        
+                        <div class="uk-grid-small uk-child-width-auto" uk-grid>
+                            <div>
+                                <a class="uk-button uk-button-text" href="./zakladni-scena.html">Přejít na návod</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/zakladniScena.png');"></div>
+
+                
+            </div>
+
+            <div class="uk-child-width-1-2@m" uk-grid >
+                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/zakladniScena.png');"></div>
+
+                <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
+                    <article class="uk-article uk-padding-small">
+
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Materiály a textury</a></h2>
+                    
+                        <p class="uk-article-meta"><a href="#">Materialy</a> | <a href="#">Textury</a></p>
+                    
+                        <p class="uk-text-lead">Materiály definují vzhled sítě určením její barvy, lesku a odrazivosti. Textury jsou obrázky, které lze aplikovat na materiál a dodat mu tak realističtější vzhled.</p>
+                        <div class="uk-grid-small uk-child-width-auto" uk-grid>
+                            <div>
+                                <a class="uk-button uk-button-text" href="./zakladni-scena.html">Přejít na návod</a>
+                            </div>
+                        </div>
+
+                    </article>
+                </div>                
+            </div>
+
+            <div class="uk-child-width-1-2@m" uk-grid >
+                <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
+                    <article class="uk-article uk-padding-small">
+
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Animace</a></h2>
+                    
+                        <p class="uk-article-meta"></p>
+                    
+                        <p class="uk-text-lead">Babylon.js poskytuje výkonný systém animací, který umožňuje animovat vlastnosti sítí, kamer, světel a materiálů. Animace lze definovat pomocí keyframů a lze je ovládat různými metodami, jako jsou funkce easing, režimy smyček a události.</p>
+                        <div class="uk-grid-small uk-child-width-auto" uk-grid>
+                            <div>
+                                <a class="uk-button uk-button-text" href="./zakladni-scena.html">Přejít na návod</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/zakladniScena.png');"></div>
+
+                
+            </div>
+        </main>
+        
+
+    </div>
+
+    <script src="./ImportedPlaygrounds/desktop.js"></script>
+    <script src="./prism/prism.js"></script>
+
+</body>
+</html>
