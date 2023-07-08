@@ -94,21 +94,24 @@
                                 </li>
 
                                 <li>
-                                    <a href="./zakladni-scena.html">
-                                        Mesh
-                                    </a>
+                                    <a href="../Meshes/">Meshes</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Meshes/?id=primitiveStructures">Primitivní struktury</a></li>
+                                            <li><a href="../Meshes/?id=importModels">Import modelů</a></li>
+                                            <li><a href="../Meshes/?id=transformations">Transformace</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
 
                                 <li>
-                                    <a href="./zakladni-scena.html">
-                                        Materiály a textury
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="./zakladni-scena.html">
-                                        Animace
-                                    </a>
+                                    <a href="../Materialy/">Materiály</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Materialy/?id=materials">Materiály</a></li>
+                                            <li><a href="../Materialy/?id=textures">Textury</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
                             </ul>           
                         </div>
@@ -192,10 +195,7 @@ světla), která udává barvu přímo neosvětlené části objektů a scény.
                         <pre class="language-js"><code>hemisphericLight.diffuse = new BABYLON.Color3(0.85, 0.8, 0.22); /* žlutá barva světla*/
 hemisphericLight.groundColor = new BABYLON.Color3(0.69, 0.05, 0.05); /* červená podkladová barva */</code></pre>
                     </div>
-
-                    <div>
-                        <canvas class="uk-height-large" id="hemispheric-light" touch-action="none"></canvas>
-                    </div>
+                    <canvas class="uk-height-large" id="hemispheric-light" touch-action="none"></canvas>
                 </div>
             </article>
         </div>
@@ -217,9 +217,7 @@ hemisphericLight.groundColor = new BABYLON.Color3(0.69, 0.05, 0.05); /* červen�
                 <h4 class="uk-article-title">Tvorba a vlastnosti</h4>   
                 <p class="uk-text-meta uk-text-uppercase"><a href="https://playground.babylonjs.com/#IDETX5#6">Přejít na interaktivní ukázku v playground</a></p>
                 <div class="uk-child-width-1-2@m" uk-grid>
-                    <div>
-                        <canvas class="uk-height-large" id="directional-light" touch-action="none"></canvas>
-                    </div>
+                    <canvas class="uk-height-large" id="directional-light" touch-action="none"></canvas>
                     <div>
                         <p class="uk-text-lead">
                             Parametry konstruktoru jsou stejné jako v případě třídy HemisphericLight s vyjímkou obrácených hodnot směrového vektoru.
@@ -263,10 +261,7 @@ hemisphericLight.groundColor = new BABYLON.Color3(0.69, 0.05, 0.05); /* červen�
                                 Intenzita světla se zmenšuje se vzdáleností podle inverzního kvadratického vztahu.
                             </p>
                     </div>
-
-                    <div>
-                        <canvas class="uk-height-large" id="point-light" touch-action="none"></canvas>
-                    </div>
+                    <canvas class="uk-height-large" id="point-light" touch-action="none"></canvas>
                 </div>
             </article>
         </div>
@@ -288,9 +283,7 @@ hemisphericLight.groundColor = new BABYLON.Color3(0.69, 0.05, 0.05); /* červen�
                     <h4 class="uk-article-title">Tvorba a vlastnosti</h4>
                     <p class="uk-text-meta uk-text-uppercase"><a href="https://playground.babylonjs.com/#IDETX5#8">Přejít na interaktivní ukázku v playground</a></p>  
                     <div class="uk-child-width-1-2@m" uk-grid>
-                        <div>
-                            <canvas class="uk-height-large" id="spot-light" touch-action="none"></canvas>
-                        </div>
+                        <canvas class="uk-height-large" id="spot-light" touch-action="none"></canvas>
                         <div>
                             <p class="uk-text-lead">
                                 Konstruktor Světla je definován svou polohou,
@@ -412,7 +405,7 @@ if (event.target === canvasSLScroll) {
 </script>
 
 <script>
-window.addEventListener("resizeCamera", function () {
+window.addEventListener("resize", function () {
     engineHL.resize();
     enginePL.resize();
     engineSL.resize();

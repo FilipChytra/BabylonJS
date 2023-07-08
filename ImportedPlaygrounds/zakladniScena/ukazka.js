@@ -15,6 +15,8 @@ var canvas = document.getElementById("zakladni-scena");
         var createScene = function () {
     // This creates a basic Babylon Scene object (non-mesh)
     var scene = new BABYLON.Scene(engine);
+    scene.clearColor = new BABYLON.Color4(0,0,0,.1);
+
     var engine = new BABYLON.Engine()
 
     // This creates and positions a free camera (non-mesh)

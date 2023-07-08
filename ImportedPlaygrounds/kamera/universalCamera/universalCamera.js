@@ -14,12 +14,14 @@ var canvasUC = document.getElementById("universal-camera");
         var createDefaultEngineUC = function() { return new BABYLON.Engine(canvasUC, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
         var createSceneUC = function () {
     var sceneUC = new BABYLON.Scene(engineUC);
+    sceneUC.clearColor = new BABYLON.Color4(0,0,0,.1);
 
     var cameraUC = new BABYLON.UniversalCamera("camera1", new BABYLON.Vector3(-10, 5, 0), sceneUC);
 
     cameraUC.setTarget(new BABYLON.Vector3(0, 0, -.5));
 
     cameraUC.attachControl(canvasUC, true);
+    cameraUC.wheelDeltaPercentage = 0.01;
 
     var lightUC = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), sceneUC);
 

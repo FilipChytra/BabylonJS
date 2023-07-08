@@ -92,22 +92,26 @@
                                     </div>
                                 </li>
 
+                                
                                 <li>
-                                    <a href="./zakladni-scena.html">
-                                        Mesh
-                                    </a>
+                                    <a href="./Route/Meshes/">Meshes</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="./Route/Meshes/?id=primitiveStructures">Primitivní struktury</a></li>
+                                            <li><a href="./Route/Meshes/?id=importModels">Import modelů</a></li>
+                                            <li><a href="./Route/Meshes/?id=transformations">Transformace</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
 
                                 <li>
-                                    <a href="./zakladni-scena.html">
-                                        Materiály a textury
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="./zakladni-scena.html">
-                                        Animace
-                                    </a>
+                                    <a href="./Route/Materialy/">Materiály</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="./Route/Materialy/?id=materials">Materiály</a></li>
+                                            <li><a href="./Route/Materialy/?id=textures">Textury</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
                             </ul>           
                         </div>
@@ -189,7 +193,7 @@
                 <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
                     <article class="uk-article uk-padding-small">
 
-                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Inicializace Scény</a></h2>
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="./Route/InicializaceScény/">Inicializace Scény</a></h2>
                     
                         <p class="uk-article-meta"><a href="./Route/InicializaceScény/?id=canvas">Canvas</a> | <a href="./Route/InicializaceScény/?id=engine">Engine</a> | <a href="./Route/InicializaceScény/?id=scene">Scene</a> | <a href="./Route/InicializaceScény/?id=renderLoop">RenderLoop</a></p>
                     
@@ -208,7 +212,7 @@
                 <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
                     <article class="uk-article uk-padding-small">
 
-                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Kamery</a></h2>
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="./Route/Kamery/">Kamery</a></h2>
                     
                         <p class="uk-article-meta"><a href="./Route/Kamery/?id=freeCamera">FreeCamera</a> | <a href="./Route/Kamery/?id=universalCamera">UniversalCamera</a> | <a href="./Route/Kamery/?id=arcRotateCamera">ArcRotateCamera </a> | <a href="./Route/Kamery/?id=followCamera">FollowCamera</a></p>
                     
@@ -233,12 +237,12 @@
                 <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
                     <article class="uk-article uk-padding-small">
 
-                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Světla</a></h2>
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="./Route/Světla/">Světla</a></h2>
                     
                         <p class="uk-article-meta"><a href="./Route/Světla/?id=hemisphericLight">HemisphericLight</a> | <a href="./Route/Světla/?id=directionalLight">DirectionalLight</a> | <a href="./Route/Světla/?id=pointLight">PointLight </a> | <a href="../Route/Světla/?id=spotLight">SpotLight</a> | <a href="../Route/Světla/?id=lightProperties">Vlastnosti</a> </p>
                     
-                        <p class="uk-text-lead">Objekt kamera slouží jako oko, jehož prostřednictvím je scéna vizualizována
-                            a umožňuje tak uživatelům vnímat 3D prostředí z různých perspektiv.</p>
+                        <p class="uk-text-lead">Zdroje světla v 3D renderech mají podobný základní účel jako ve skutečném světě - osvětlují scénu a objekty v ní. Bez světla by byla scéna zcela tmavá
+                            a objekty by vypadaly ploše, bez hloubky a rozměru.</p>
                         
                         <div class="uk-grid-small uk-child-width-auto" uk-grid>
                             <div>
@@ -255,65 +259,45 @@
                 <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
                     <article class="uk-article uk-padding-small">
 
-                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Mesh / Polygonové sítě</a></h2>
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="./Route/Meshes/">Meshes</a></h2>
                     
-                        <p class="uk-article-meta"><a href="#">Tvorba základních objektů</a> | <a href="#">Manipulace</a> | <a href="#">Import modelů</a></p>
+                        <p class="uk-article-meta"><a href="./Route/Meshes/?id=primitiveStructures">Tvorba základních objektů</a> | <a href="./Route/Meshes/?id=importModels">Import modelů</a> | <a href="./Route/Meshes/?id=transfomations">Transformace</a> </p>
                     
                         <p class="uk-text-lead">Mesh je kolekce vrcholů, hran a ploch, které definují tvar modelu. Třída Mesh v Babylon.js poskytuje různé metody a vlastnosti pro manipulaci se sítí. Krom tvorby základních objektů, lze importovat složitější modely z externích souborů.</p>
                         
                         <div class="uk-grid-small uk-child-width-auto" uk-grid>
                             <div>
-                                <a class="uk-button uk-button-text" href="./zakladni-scena.html">Přejít na návod</a>
+                                <a class="uk-button uk-button-text" href="./Route/Meshes/">Přejít na návod</a>
                             </div>
                         </div>
                     </article>
                 </div>
-                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/zakladniScena.png');"></div>
+                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/BabylonJS-Meshes.png');"></div>
 
                 
             </div>
 
             <div class="uk-child-width-1-2@m" uk-grid >
-                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/zakladniScena.png');"></div>
+                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/BabylonJS-Materialy.png');"></div>
 
                 <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
                     <article class="uk-article uk-padding-small">
 
                         <h2 class="uk-article-title"><a class="uk-link-reset" href="">Materiály a textury</a></h2>
                     
-                        <p class="uk-article-meta"><a href="#">Materialy</a> | <a href="#">Textury</a></p>
+                        <p class="uk-article-meta"><a href="./Route/Materialy/?id=materials">Materialy</a> | <a href="./Route/Materialy/?id=texturs">Textury</a></p>
                     
                         <p class="uk-text-lead">Materiály definují vzhled sítě určením její barvy, lesku a odrazivosti. Textury jsou obrázky, které lze aplikovat na materiál a dodat mu tak realističtější vzhled.</p>
                         <div class="uk-grid-small uk-child-width-auto" uk-grid>
                             <div>
-                                <a class="uk-button uk-button-text" href="./zakladni-scena.html">Přejít na návod</a>
+                                <a class="uk-button uk-button-text" href="./Route/Materialy/">Přejít na návod</a>
                             </div>
                         </div>
-
                     </article>
                 </div>                
             </div>
 
-            <div class="uk-child-width-1-2@m" uk-grid >
-                <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
-                    <article class="uk-article uk-padding-small">
-
-                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Animace</a></h2>
-                    
-                        <p class="uk-article-meta"></p>
-                    
-                        <p class="uk-text-lead">Babylon.js poskytuje výkonný systém animací, který umožňuje animovat vlastnosti sítí, kamer, světel a materiálů. Animace lze definovat pomocí keyframů a lze je ovládat různými metodami, jako jsou funkce easing, režimy smyček a události.</p>
-                        <div class="uk-grid-small uk-child-width-auto" uk-grid>
-                            <div>
-                                <a class="uk-button uk-button-text" href="./zakladni-scena.html">Přejít na návod</a>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/zakladniScena.png');"></div>
-
-                
-            </div>
+            <div class="uk-section-small"></div>
         </main>
         
 

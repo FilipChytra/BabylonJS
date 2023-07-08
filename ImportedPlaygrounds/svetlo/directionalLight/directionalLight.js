@@ -14,6 +14,8 @@ var canvasDL = document.getElementById("directional-light");
         var createDefaultEngineDL = function() { return new BABYLON.Engine(canvasDL, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
         var createSceneDL = function () {
     var sceneDL = new BABYLON.Scene(engineDL);
+    sceneDL.clearColor = new BABYLON.Color4(0,0,0,.1);
+
 
     var cameraDL = new BABYLON.ArcRotateCamera("camera1", 1/2*Math.PI, 1/2*Math.PI, 3, new BABYLON.Vector3(0, .5, 0), sceneDL);
     cameraDL.wheelDeltaPercentage = 0.02;
@@ -22,7 +24,7 @@ var canvasDL = document.getElementById("directional-light");
     cameraDL.attachControl(canvasDL, true);
 
     var lightDL = new BABYLON.DirectionalLight("directionalLight", new BABYLON.Vector3(-.5, -1, 0), sceneDL);
-    
+
     lightDL.diffuse = new BABYLON.Color3(0.12, 0.55, 0.09);
     lightDL.intensity = 1;
 

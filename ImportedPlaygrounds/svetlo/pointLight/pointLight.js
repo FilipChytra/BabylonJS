@@ -14,6 +14,8 @@ var canvasPL = document.getElementById("point-light");
         var createDefaultEnginePL = function() { return new BABYLON.Engine(canvasPL, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
         var createScenePL = function () {
     var scenePL = new BABYLON.Scene(enginePL);
+    scenePL.clearColor = new BABYLON.Color4(0,0,0,.1);
+
 
     var cameraPL = new BABYLON.ArcRotateCamera("camera1", 1/2*Math.PI, 1/2*Math.PI, 3, new BABYLON.Vector3(0, .5, 0), scenePL);
     cameraPL.wheelDeltaPercentage = 0.02;

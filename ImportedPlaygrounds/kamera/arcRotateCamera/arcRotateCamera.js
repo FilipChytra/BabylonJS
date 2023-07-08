@@ -14,6 +14,7 @@ var canvasARC = document.getElementById("arc-rotate-camera");
         var createDefaultEngineARC = function() { return new BABYLON.Engine(canvasARC, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
         var createSceneARC = function () {
     var sceneARC = new BABYLON.Scene(engineARC);
+    sceneARC.clearColor = new BABYLON.Color4(0,0,0,.1);
 
     var cameraARC = new BABYLON.ArcRotateCamera("camera1", Math.PI, 1/3*Math.PI, 10, new BABYLON.Vector3(0, 0, -.5), sceneARC);
     cameraARC.wheelDeltaPercentage = 0.02;

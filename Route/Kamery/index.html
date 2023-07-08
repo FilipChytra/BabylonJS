@@ -93,21 +93,24 @@
                                 </li>
 
                                 <li>
-                                    <a href="./zakladni-scena.html">
-                                        Mesh
-                                    </a>
+                                    <a href="../Meshes/">Meshes</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Meshes/?id=primitiveStructures">Primitivní struktury</a></li>
+                                            <li><a href="../Meshes/?id=importModels">Import modelů</a></li>
+                                            <li><a href="../Meshes/?id=transformations">Transformace</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
 
                                 <li>
-                                    <a href="./zakladni-scena.html">
-                                        Materiály a textury
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a href="./zakladni-scena.html">
-                                        Animace
-                                    </a>
+                                    <a href="../Materialy/">Materiály</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Materialy/?id=materials">Materiály</a></li>
+                                            <li><a href="../Materialy/?id=textures">Textury</a></li>
+                                        </ul>
+                                    </div>
                                 </li>
                             </ul>           
                         </div>
@@ -191,10 +194,7 @@ kamer, které budou vyhovovat specifickým potřebám projektu.
                                     je proveden v závislosti na aktuálním směru kamery.
                                 </p>
                             </div>
-
-                            <div>
-                                <canvas class="uk-height-large" id="free-camera" touch-action="none"></canvas>
-                            </div>
+                            <canvas class="uk-height-large" id="free-camera" touch-action="none"></canvas>
                         </div>
                     </article>
                 </div>
@@ -214,9 +214,8 @@ volbou pro scény vyžadující tento druh navigace napříč zařízeními.
                         <h4 class="uk-article-title">Tvorba a ovládání</h4>   
                         <p class="uk-text-meta uk-text-uppercase"><a href="https://playground.babylonjs.com/#LW3JCS#3">Přejít na interaktivní ukázku v playground</a></p>
                         <div class="uk-child-width-1-2@m" uk-grid>
-                            <div>
-                                <canvas class="uk-height-large" id="universal-camera" touch-action="none"></canvas>
-                            </div>
+                            <canvas class="uk-height-large" id="universal-camera" touch-action="none"></canvas>
+
                             <div>
                                 <p class="uk-text-lead">
                                     Parametry konstruktoru jsou stejné jako v případě třídy FreeCamera.
@@ -264,10 +263,7 @@ beta pro horizontální a vertikální natočení. Dále hodnota radius, která
 udává vzdálenost mezi kamerou a cílovým bodem (target), který je neměnný a kolem kterého se kamera otáčí a udržuje jej jako ohniskový bod. 
                                     </p>
                             </div>
-
-                            <div>
-                                <canvas class="uk-height-large" id="arc-rotate-camera" touch-action="none"></canvas>
-                            </div>
+                            <canvas class="uk-height-large" id="arc-rotate-camera" touch-action="none"></canvas>
                         </div>
                     </article>
                 </div>
@@ -370,7 +366,7 @@ var followCamera = new BABYLON.FollowCamera(
 </script>
 
 <script>
-    window.addEventListener("resizeCamera", function () {
+    window.addEventListener("resize", function () {
             engineFC.resize();
             engineUC.resize();
             engineARC.resize();

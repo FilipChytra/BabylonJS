@@ -14,6 +14,8 @@ var canvasHL = document.getElementById("hemispheric-light");
         var createDefaultEngineHL = function() { return new BABYLON.Engine(canvasHL, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
         var createSceneHL = function () {
     var sceneHL = new BABYLON.Scene(engineHL);
+    sceneHL.clearColor = new BABYLON.Color4(0,0,0,.1);
+
 
     var cameraHL = new BABYLON.ArcRotateCamera("camera1", 1/2*Math.PI, 1/2*Math.PI, 3, new BABYLON.Vector3(0, .5, 0), sceneHL);
 

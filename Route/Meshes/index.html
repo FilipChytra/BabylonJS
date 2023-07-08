@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Babylon.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+        <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+        <script src="https://preview.babylonjs.com/ammo.js"></script>
+        <script src="https://preview.babylonjs.com/cannon.js"></script>
+        <script src="https://preview.babylonjs.com/Oimo.js"></script>
+        <script src="https://preview.babylonjs.com/earcut.min.js"></script>
+        <script src="https://preview.babylonjs.com/babylon.js"></script>
+        <script src="https://preview.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+        <script src="https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+        <script src="https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+        <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+        <script src="https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+        <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
+        <script src="https://preview.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+
+    <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
+
+    <link href="../../prism/prism.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../UIKit/css/uikit.min.css" />
+    <script src="../../UIKit/js/uikit.min.js"></script>
+    <script src="../../UIKit/js/uikit-icons.min.js"></script>
+
+    <title>BabylonJS | Meshes</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <div id="content" class="uk-container uk-container-large" style="background-color: white;" >
+        <header uk-sticky="start: 200; animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-dark">
+            <nav class="uk-navbar-container uk-box-shadow-large">
+                <div class="uk-container">
+                    <div uk-navbar>
+                        <div class="uk-navbar-left">
+                            <a class="uk-navbar-item uk-logo" href="../../" aria-label="Back to Home">Babylon.js</a>
+                        </div>
+                        <div class="uk-navbar-right">
+                            <ul class="uk-navbar-nav">
+                                <li>
+                                    <a href="../Implementace/">Implementace</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Implementace/?id=babylonjs-viewer">Babylon.js Viewer</a></li>
+                                            <li><a href="../Implementace/?id=babylonjs-playground">Babylon.js Playground</a></li>
+                                            <li><a href="../Implementace/?id=babylonjs-balicky">Babylon.js Balíčky</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="../InicializaceScény/">Inicializace scény</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../InicializaceScény/?id=canvas">Canvas</a></li>
+                                            <li><a href="../InicializaceScény/?id=engine">Engine</a></li>
+                                            <li><a href="../InicializaceScény/?id=scene">Scene</a></li>
+                                            <li><a href="../InicializaceScény//?id=renderLoop">RenderLoop</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="../Kamery/">Kamery</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Kamery/?id=freeCamera">FreeCamera</a></li>
+                                            <li><a href="../Kamery/?id=universalCamera">UniversalCamera</a></li>
+                                            <li><a href="../Kamery/?id=arcRotateCamera">ArcRotateCamera</a></li>
+                                            <li><a href="../Kamery//?id=followCamera">FollowCamera</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="#">Světla</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="#hemisphericLight">HemisphericLight</a></li>
+                                            <li><a href="#directionalLight">DirectionalLight</a></li>
+                                            <li><a href="#pointLight">PointLight</a></li>
+                                            <li><a href="#spotLight">SpotLight</a></li>
+                                            <li><a href="#lightProperties">Vlastnosti světel</a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Meshes
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="../Materialy/">Materiály</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Materialy/?id=materials">Materiály</a></li>
+                                            <li><a href="../Materialy/?id=textures">Textury</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>           
+                        </div>
+            
+                    </div>
+                </nav>
+        </header>
+
+        
+
+<main>
+    <div id="meshes" class="uk-section">
+        <div class="uk-flex uk-flex-column uk-flex-center">
+            <article class="uk-article uk-padding-small">
+
+                <h2 class="uk-article-title">Meshes</h2>
+            
+                <p class="uk-text-lead">Meshové struktury a s nimi spojená geometrie představují základní stavební
+                    kameny v oblasti 3D vykreslování a modelování. Slouží jako stavební kameny
+                    pro vytváření 3D objektů a scén.
+                </p>
+            </article>
+            <article class="uk-article uk-padding-small">
+
+                <h4 class="uk-article-title">Polygonové sítě</h4>
+
+                <p class="uk-text-lead">
+                    Polygonové sítě jsou soubor vrcholů, hran a ploch, které společně reprezentují tvar 3D objektu. Každý vrchol je bod v 3D prostoru a vrcholy jsou
+spojeny hranami. Když se spojí tři nebo více hran, vytvoří plochu. Například
+v případě krychle představuje každý roh vrchol, které spojují hrany krychle a
+její strany jsou plochami.
+                </p>
+                <p class="uk-text-lead">
+                Sítě jsou významné při 3D modelování a vykreslování, protože se používají k vytváření 3D objektů, které vyplňují scénu. Každý prvek ve 3D scéně,
+od postav přes různé modely objektů až po celé prostředí, je tvořen pomocí
+meshových struktur. Složitost sítě, často označovaná jako úroveň podrobnosti,
+je obvykle úměrná počtu jejích vrcholů a stěn. Síť s vyšším rozlišením obsahuje více vrcholů a ploch a může reprezentovat složitější tvary a obecně vede
+k podrobnějšímu zobrazení, ale také vyžaduje více výpočetních prostředků k
+vykreslení.
+                </p>
+                <p class="uk-text-lead">
+                    Babylon.js nabízí různé typy sítí, které lze rozdělit do dvou hlavních kategorií. Parametrické tvary jsou jednoduché 3D tvary, jako jsou koule, kvádry, válce
+atd., vytvořené pomocí vestavěných metod v objektu BABYLON.MeshBuilder.
+Naproti tomu modelové sítě jsou složitější tvary importované z externího 3D
+modelovacího softwaru.
+                    </p>
+            </article>
+            <article class="uk-article uk-padding-small">
+
+                <h4 class="uk-article-title">Geometrie</h4>
+
+                <p class="uk-text-lead">
+                    Geometrie v kontextu 3D modelování označuje matematický popis tvaru
+objektu. Poskytují základní strukturu pro síť. Zatímco síť se zabývá reprezentací tvaru ve 3D prostoru, geometrie poskytuje parametry, které tento tvar
+definují. 
+                </p>
+                <p class="uk-text-lead">
+                Například geometrie koule zahrnuje její poloměr, geometrie krychle
+                zahrnuje její délku, šířku a výšku a geometrie válce zahrnuje jeho poloměr a
+                výšku. Vzájemné působení mezi sítěmi a geometriemi je při 3D modelování
+                klíčové. Společně umožňují vytvářet složité a rozmanité 3D modely.
+                </p>
+            </article>
+        </div>
+    </div>
+
+
+    <div id="primitiveStructures" class="uk-section">
+        <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">Primitivní struktury</h3>
+        <div class="uk-section uk-section-small">
+            <p class="uk-text-lead">V kontextu systému Babylon.js je k dispozici řada základních typů sítí, například Box, Sphere, Cylinder a Plane. Pro tvorbu těchto primitivních struktur,
+                jako jsou koule, kvádry, válce a jiné, jsou v rámci Babylonu vestavěné metody
+                objektu BABYLON.MeshBuilder. Syntaxe těchto metod lze zobecnit tímto
+                zápisem:</p>
+                <pre class="language-js"><code>
+BABYLON.MeshBuilder.Create&lt;Objekt&gt;(nazev: string, parametry: {}, scena: BABYLON.Scene);
+
+</code></pre>
+            <p class="uk-text-lead">
+                V tomto zápise je zapotřebí nahradit &lt;Objekt&gt; požadovaným typem primitivní struktury, a za parametry námi zvoleným název, přiřazenou scénu, a v
+                neposlední řadě objekt s parametry, který má každý základních typů sítí jiný.
+                Tyto sítě lze upravovat a kombinovat a vytvářet tak složitější tvary a objekty.
+            </p>
+            
+            <article class="uk-article uk-padding-small">
+                <h4 class="uk-article-title">Ukázka</h4>
+                <p class="uk-text-meta uk-text-uppercase"><a href="https://playground.babylonjs.com/#H6RP9L#2">Přejít na interaktivní ukázku v playground</a></p>
+                
+                <div class="uk-child-width-1-2@m" uk-grid>
+                    <div>
+                        <pre class="language-js"><code>var krychle = BABYLON.MeshBuilder.CreateBox(
+    'krychle', {size : 1}, scene
+);
+var kvadr = BABYLON.MeshBuilder.CreateBox(
+    'kvadr', { height: 1, width: 2, depth :1}, scene
+);
+var koule = BABYLON.MeshBuilder.CreateSphere(
+    'koule', {diameter: 1, segments: 10}, scene
+);
+var valec = BABYLON.MeshBuilder.CreateCylinder(
+    'valec', {height: 1, diameter: 1}, scene
+);
+var kuzel = BABYLON.MeshBuilder.CreateCylinder(
+    "kuzel", {height: 1, diameterBottom: 1, diameterTop: 0}, scene
+);</code></pre>
+                    </div>
+                    <canvas class="uk-height-large" id="primitive-structures" touch-action="none"></canvas>
+                </div>
+                <p class="uk-text-lead">
+                    Například v rámci parametrů sítě Box lze definovat velikost (size), čímž
+                    vznikne box o stejné velikosti stran, tedy krychle. Dále můžeme v rámci objektu s parametry definovat různé hodnoty pro šířku (width), výšku (height) a
+                    hloubku (depth) zvlášť, a tím snadno vytvářet různé kvádrovité tvary. I u sítě Cylinder můžeme definovat obecně jeho průměr pro obě jeho základny pomocí
+                    parametru diameter, nebo lze každé základně přiřadit jinou hodnotu pomocí
+                    diameterBottom a diameterTop, a tím lze vytvořit model kužele, pokud jeden z nich nastavíme na hodnotu nula. Díky těmto parametrům, úpravám a
+                    kombinací lze vytvářet i složitější tvary a objekty
+                </p>
+            </article>
+
+            <div class="uk-section-xsmall"></div>
+            <p class="uk-text-lead">
+            Mimo tyto trojrozměrná tělesa můžeme stejným způsobem vytvořit i samostatné plochy (Plane) a podkladové plochy (Ground). Ty lze obě definovat
+svojí výškou a šířkou, ale liší se od sebe jejich základní orientací v prostoru.
+Objekt Plane je paralelní s osami X a Z, zatímco Ground je paralelně s osami
+X a Z. Díky tomu hodnota výšky u podkladové plochy určuje velikost na ose
+Z, i když zdánlivě nastavuje hloubku.</p>
+
+        <article class="uk-article uk-padding-small">
+            <h4 class="uk-article-title">Další možnosti tvorby sítí</h4>
+            <p class="uk-text-lead">
+                Mimo vytváření primitivních struktur umožňuje Babylon také tvorbu komplexnějších parametrických sítí. Ty jsou definovány polem parametrů typu Vector3.
+To dovoluje, že jejich tvar může být nepravidelný. Tyto typy sítí umožňují vytvářet lomené nebo nelomené čáry napříč 3D prostorem a také 2D polygony,
+které lze extrudovat do 3D. Mohou také vytlačovat 2D obrys podél 3D cestys proměnným natočením a měřítkem podél dané cesty nebo obrys obtáčet a
+vytvářet tak tvar s rotační symetrií.
+            </p>
+            <p class="uk-text-lead">
+                Důležité je také poznamenat, že Babylon.js má funkci pro vytváření vlastních sítí, pokud vestavěné primitivy nevyhovují potřebám modelu. Síť lze vytvořit zadáním jejích vrcholů a indexů. Vrcholy definují tvar a polohu sítě a
+                indexy určují, jak se vrcholy spojují, aby tvořily stěny
+            </p>
+            <p class="uk-text-lead">
+                Kromě toho Babylon.js podporuje operace se sítěmi, jako je slučování a
+                rozdělení. Sloučení geometrií více objektů do jedné může optimalizovat scénu
+                snížením počtu volání kreslení. Naproti tomu rozdělení umožňuje rozdělit síť
+                na dvě části.
+            </p>
+        </div>
+    </div>
+    <div id="importModels" class="uk-section">
+        <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">Import externích modelů</h3>
+        <article class="uk-article uk-padding-small">
+            <p class="uk-text-lead">
+                Framework slouží jakožto 3D vykreslovací engine Neklade si za úkol obstarat
+                veškeré funkce plnohodnotného 3D modelovacího softwaru jako jsou kupříkladu programy Blender, Maja, Cinema4D či CAD programy pro počítačovou
+                podporu konstrukce jako jsou AutoCAD nebo SolidWorks. Proto se lze domnívat, že při vývoji projektu může dojít k potřebě v rámci scény použít modely
+                vzniklé z těchto externích nástrojů. Naštěstí import externích zdrojů do Babylon.js je díky robustním možnostem enginu pro import poměrně jednoduchý
+                proces.
+            </p>
+            <p class="uk-text-lead">
+                Framework Babylon.js podporuje širokou škálu formátů 3D souborů, včetně,
+                ale nejen, formátů .babylon, .gltf, .glb (binární forma GLTF), .obj a .stl. Výběr formátu souboru závisí do značné míry na potřebách projektu a nástrojích
+                používaných k vytváření 3D modelů.
+            </p>
+        </article>
+        
+        <article class="uk-article uk-padding-small">
+            <h4 class="uk-article-title">Metody importu</h4>
+            <p class="uk-text-meta uk-text-uppercase"><a href="https://playground.babylonjs.com/#IDETX5#9">Přejít na interaktivní ukázku v playground</a></p>
+
+            <div class="uk-child-width-1-2@m" uk-grid>
+                <div>
+                    <p class="uk-text-lead">
+                        Model lze importovat pomocí třídy SceneLoader a jeho funkcí Append() a ImportMesh(), které
+přebírají řetězce adres URL souborů, řetězec názvu souboru. Obě metody mají také svou asynchronous verzi.
+                    </p>
+                    <p>Metoda append</p>
+                    <pre class="language-js"><code>BABYLON.SceneLoader.Append/*AppendAsync*/(
+    "url/cesta/souboru/", "nazevSouboru.glb", scene
+);</code></pre>
+                    <p>Metoda ImportMesh</p>
+                    <pre class="language-js"><code>BABYLON.SceneLoader.ImportMesh/*ImportMeshAsync*/(
+    "mesh", "url/cesta/souboru/", "nazevSouboru.glb", scene
+);</code></pre>
+                </div>
+                <canvas class="uk-height-large" id="import-methods" touch-action="none"></canvas>
+            </div>
+        </article>
+
+    </div>
+
+    <div id="transformations" class="uk-section">
+        <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">Transformace</h3>
+        <article class="uk-article uk-padding-small">
+            <p class="uk-text-lead">
+                Každý objekt má řadu vlastností a transformací, se kterými lze manipulovat.
+                Lze jimi například přesouvat, otáčet a měnit jejich měřítko pomocí vlastností
+                position (poloha), rotation (otáčení) a scaling (měřítko).
+            </p>
+        </article>
+        
+        <article class="uk-article uk-padding-small">
+            <h4 class="uk-article-title">Posuv</h4>
+            <p class="uk-text-lead">
+                Posuv či translace je operace, při níž se objekt posune podél os X, Y a Z. Poloha
+objektu (position) je reprezentována vektorem, který označuje jeho souřadnice
+v 3D prostoru. Tato vlastnost určuje umístění objektu v prostoru a změnou této
+vlastnosti se síť posune.
+            </p>
+            <p>Vlastnost position</p>
+            <pre class="language-js"><code>
+mesh.position = new Babylon.Vector(10 , 0 , 0);
+
+</code></pre>
+            <p class="uk-text-lead">
+                Alternativně lze použít k posunutí sítě podél určité
+osy o určitou hodnotu metodu translate() s parametrem směrového vektoru
+udávající směr posuvu a hodnotou vzdálenosti.
+            </p>
+            <p>Metoda translate()</p>
+            <pre class="language-js"><code>
+mesh.translate(new BABYLON.Vector3(1, 0, 0), 10);
+
+</code></pre>
+        </article>
+
+        <article class="uk-article uk-padding-small">
+            <h4 class="uk-article-title">Rotace</h4>
+            <p class="uk-text-lead">
+                Rotací dochází k otočení objektů kolem os X, Y a Z. Vlastnost rotace (rotation) je definována vektorem představujícím natočení v radiánech. Změnou
+této vlastnosti se síť otočí. 
+            </p>
+            <p>Vlastnost rotation</p>
+            <pre class="language-js"><code>
+mesh.rotation = new BABYLON.Vector3(0, Math.PI/2, 0);
+
+</code></pre>
+            <p class="uk-text-lead">
+                Alternativně lze metodu rotate() použít k otočení sítě kolem určité osy o určitý úhel, podobným způsobem jako v metodě
+translate().
+            </p>
+            <p>Metoda rotate()</p>
+            <pre class="language-js"><code>
+mesh.translate(new BABYLON.Vector3(1, 0, 0), 10);
+
+</code></pre>
+        </article>
+
+        <article class="uk-article uk-padding-small">
+            <h4 class="uk-article-title">Škálování
+            </h4>
+            <p class="uk-text-lead">
+                Objekt lze škálovat pomocí vlastnosti scaling, což je objekt Vector3, který
+představuje faktor škálování podél os X, Y a Z. Změnou této vlastnosti se
+objekt prodlužuje v daném směru.
+            </p>
+            <p>Vlastnost scaling</p>
+            <pre class="language-js"><code>
+mesh.scaling = new BABYLON.Vector3(1 , 2, 1);
+
+</code></pre>
+        </article>
+    </div>
+
+
+</main>
+
+<script>
+window.onload = function() {
+var params = new URLSearchParams(window.location.search);
+var id = params.get('id');
+
+var element = document.getElementById(id);
+if(element) {
+    element.scrollIntoView();
+}
+}
+</script>
+
+<script>
+const canvasPCScroll = document.getElementById('primitive-structures');
+canvasPCScroll.addEventListener('wheel', (event) => {
+if (event.target === canvasPCScroll) {
+
+    event.preventDefault();
+}
+});
+
+const canvasIMScroll = document.getElementById('import-methods');
+canvasIMScroll.addEventListener('wheel', (event) => {
+if (event.target === canvasIMScroll) {
+
+    event.preventDefault();
+}
+
+
+});
+</script>
+
+<script>
+window.addEventListener("resize", function () {
+    enginePS.resize();
+    engineIM.resize();
+});
+</script>
+
+<script src="../../ImportedPlaygrounds/meshes/primitiveStractures/meshes.js"></script>
+<script src="../../ImportedPlaygrounds/meshes/importMethods/importMethods.js"></script>
+
+<script src="../../prism/prism.js"></script>
+
+</body>
+</html>

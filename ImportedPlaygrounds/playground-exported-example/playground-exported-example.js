@@ -15,6 +15,8 @@ var canvas = document.getElementById("playground-exported-example");
         var createScene = function () {
     // This creates a basic Babylon Scene object (non-mesh)
     var scene = new BABYLON.Scene(engine);
+    scene.clearColor = new BABYLON.Color4(0,0,0,.1);
+
 
     // This creates and positions a free camera (non-mesh)
     var camera = new BABYLON.ArcRotateCamera("camera1", Math.PI*.75 ,1 ,20 , new BABYLON.Vector3(0, 0, 0), scene);
@@ -36,7 +38,7 @@ var canvas = document.getElementById("playground-exported-example");
 };
                 window.initFunction = async function() {
 
-                    
+
                     
                     var asyncEngineCreation = async function() {
                         try {

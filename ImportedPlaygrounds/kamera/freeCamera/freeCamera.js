@@ -15,6 +15,7 @@ var canvasFC = document.getElementById("free-camera");
         var createSceneFC = function () {
 
     var sceneFC = new BABYLON.Scene(engineFC);
+    sceneFC.clearColor = new BABYLON.Color4(0,0,0,.1);
 
     var cameraFC = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(-10, 5, 0), sceneFC);
 
