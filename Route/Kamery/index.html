@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Babylon.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+        <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+        <script src="https://preview.babylonjs.com/ammo.js"></script>
+        <script src="https://preview.babylonjs.com/cannon.js"></script>
+        <script src="https://preview.babylonjs.com/Oimo.js"></script>
+        <script src="https://preview.babylonjs.com/earcut.min.js"></script>
+        <script src="https://preview.babylonjs.com/babylon.js"></script>
+        <script src="https://preview.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+        <script src="https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+        <script src="https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+        <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+        <script src="https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+        <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
+        <script src="https://preview.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+
+    <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
+
+    <link href="../../prism/prism.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../UIKit/css/uikit.min.css" />
+    <script src="../../UIKit/js/uikit.min.js"></script>
+    <script src="../../UIKit/js/uikit-icons.min.js"></script>
+
+    <title>BabylonJS | Kamery</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <div id="content" class="uk-container uk-container-large" style="background-color: white;" >
+        <header uk-sticky="start: 200; animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-dark">
+            <nav class="uk-navbar-container uk-box-shadow-large">
+                <div class="uk-container">
+                    <div uk-navbar>
+                        <div class="uk-navbar-left">
+                            <a class="uk-navbar-item uk-logo" href="../../" aria-label="Back to Home">Babylon.js</a>
+                        </div>
+                        <div class="uk-navbar-right">
+                            <ul class="uk-navbar-nav">
+                                <li>
+                                    <a href="../Implementace/">Implementace</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Implementace/?id=babylonjs-viewer">Babylon.js Viewer</a></li>
+                                            <li><a href="../Implementace/?id=babylonjs-playground">Babylon.js Playground</a></li>
+                                            <li><a href="../Implementace/?id=babylonjs-balicky">Babylon.js Balíčky</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="../InicializaceScény/">Inicializace scény</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../InicializaceScény/?id=canvas">Canvas</a></li>
+                                            <li><a href="../InicializaceScény/?id=engine">Engine</a></li>
+                                            <li><a href="../InicializaceScény/?id=scene">Scene</a></li>
+                                            <li><a href="../InicializaceScény//?id=renderLoop">RenderLoop</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="#">Kamery</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="#freeCamera">FreeCamera</a></li>
+                                            <li><a href="#universalCamera">UniversalCamera</a></li>
+                                            <li><a href="#arcRotateCamera">ArcRotateCamera</a></li>
+                                            <li><a href="#followCamera">FollowCamera</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="../Světla/">Světla</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Světla/?id=hemisphericLight">HemisphericLight</a></li>
+                                            <li><a href="../Světla/?id=directionalLight">DirectionalLight</a></li>
+                                            <li><a href="../Světla/?id=pointLight">PointLight</a></li>
+                                            <li><a href="../Světla/?id=spotLight">SpotLight</a></li>
+                                            <li><a href="../Světla/?id=lightProperties">Vlastnosti světel</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Mesh
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Materiály a textury
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Animace
+                                    </a>
+                                </li>
+                            </ul>           
+                        </div>
+            
+                    </div>
+                </nav>
+        </header>
+        <main>
+            <div id="kamery" class="uk-section">
+                <div class="uk-flex uk-flex-column uk-flex-center">
+                    <article class="uk-article uk-padding-small">
+
+                        <h2 class="uk-article-title">Kamery</h2>
+                    
+                        <p class="uk-text-lead">V rámci Babylon.js se 3D scéna vytváří umístěním a manipulací s objekty v
+                            trojrozměrném prostoru. Protože je však obrazovka, na které se scéna zobrazuje, dvourozměrná, je zapotřebí mechanismus pro zachycení a prezentaci
+                            zploštělého zobrazení scény. Tuto roli zastávají ve scéně objekty kamer.
+                        </p>
+
+                        <p class="uk-text-lead">
+                            Po vytvoření je kamera automaticky zařazena do seznamu všech kamer
+                            scény. Scéna je vždy zobrazena z pohledu jediné aktivní kamery. Poloha a
+                            natočení kamery spolu s dalšími doplňujícími vlastnosti kamery se používají
+                            k výpočtu matice pohledu použité při vykreslování. Matice pohledu spolu s
+                            projekční maticí transformuje 3D scénu na 2D obraz, který lze zobrazit na
+                            obrazovce.
+                        </p>
+                    </article>
+                    <article class="uk-article uk-padding-small">
+
+                        <h4 class="uk-article-title">Ovládání kamery</h4>
+
+                        <p class="uk-text-lead">
+                            Aby bylo možné kameru ovládat a umožnit uživatelům interagovat se scénou, je po vytvoření kamery třeba zavolat její funkci attachControl() s dvěma
+                            parametry, z nichž první je instance dané scény a druhá boolean hodnota udávající povolení ovládání kamery uživatelem. Při nastavení na hodnotu true, lze
+                            následně například kameru natáčet pomocí tažením myši nebo přejetím prstu
+                            na dotykovém zařízení, či přibližovat a oddalovat pomocí rolovacího kolečka
+                            myši, nebo v případě mobilních zařízení gesta štípnutí.
+                        </p>
+                        <pre class="language-js"><code>
+camera.attachControl(canvas ,true);
+                        
+</code></pre>
+                    </article>
+                    <article class="uk-article uk-padding-small">
+
+                        <h4 class="uk-article-title">Druhy kamer</h4>
+
+                        <p class="uk-text-lead">
+                            Babylon.js nabízí různé varianty kamer, přičemž každá poskytuje unikátní
+způsob manipulace s polohou a orientací v 3D prostoru. Každý má také své
+specifické vlastnosti a metody, které umožňují další přizpůsobení. Pochopením
+těchto vlastností a manipulací s nimi lze vytvořit širokou škálu různorodých
+kamer, které budou vyhovovat specifickým potřebám projektu.
+                        </p>
+                    </article>
+                </div>
+            </div>
+
+
+            <div id="freeCamera" class="uk-section">
+                <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">FreeCamera</h3>
+                <div class="uk-section uk-section-small">
+                    <p class="uk-text-lead">FreeCamera představuje nejjednodušší typ kamery, poskytující svobodný pohyb a rotaci v kontextu 3D scény. Jejím účelem je poskytnout uživatelům
+                        možnost volně se pohybovat a zkoumat scénu.</p>
+                    <article class="uk-article uk-padding-small">
+                        <h4 class="uk-article-title">Tvorba a ovládání</h4>
+                        <p class="uk-text-meta uk-text-uppercase"><a href="https://playground.babylonjs.com/#LW3JCS#2">Přejít na interaktivní ukázku v playground</a></p>
+                        <div class="uk-child-width-1-2@m" uk-grid>
+                            <div>
+                                <p class="uk-text-lead">
+                                    Parametry konstruktoru objektu FreeCamera jsou název typu string, poloho typu Vector3() a instance scény.
+                                </p>
+                                <pre class="language-js"><code>var freeCamera = new BABYLON.FreeCamera(
+    "nazevKamery",
+    new BABYLON.Vector3(-10, 5, 0),
+    scene
+);</code></pre>
+                                <p class="uk-text-lead">
+                                    Pohyb kamery v různých směrech se ovládá stisknutím šipek klávesnice. Pohyby myši jsou mezitím zodpovědné za otáčení pohledu kamery. Veškerý pohyb vyvolaný šipkami
+                                    je proveden v závislosti na aktuálním směru kamery.
+                                </p>
+                            </div>
+
+                            <div>
+                                <canvas class="uk-height-large" id="free-camera" touch-action="none"></canvas>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+
+            <div id="universalCamera" class="uk-section">
+                <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">UniversalCamera</h3>
+                <div class="uk-section uk-section-small">
+                    <p class="uk-text-lead">UniversalCamera představuje standardní typ kamery, který je v rámci frameworku implicitně používán. Kombinuje funkce kamer typu FreeCamera,
+                        TouchCamera a GamepadCamera.
+                    </p>
+                    <p class="uk-text-lead">Její funkce se podobá mechanice ovládání ve hrách typu FPS (first-person shooter), což ji činí ideální
+volbou pro scény vyžadující tento druh navigace napříč zařízeními.
+                    </p>
+                    <article class="uk-article uk-padding-small">
+                        <h4 class="uk-article-title">Tvorba a ovládání</h4>   
+                        <p class="uk-text-meta uk-text-uppercase"><a href="https://playground.babylonjs.com/#LW3JCS#3">Přejít na interaktivní ukázku v playground</a></p>
+                        <div class="uk-child-width-1-2@m" uk-grid>
+                            <div>
+                                <canvas class="uk-height-large" id="universal-camera" touch-action="none"></canvas>
+                            </div>
+                            <div>
+                                <p class="uk-text-lead">
+                                    Parametry konstruktoru jsou stejné jako v případě třídy FreeCamera.
+                                </p>
+                                <pre class="language-js"><code>var universalCamera = new BABYLON.UniversalCamera(
+    "nazevKamery",
+    new BABYLON.Vector3(-10, 5, 0),
+    scene
+);</code></pre>
+                                <p class="uk-text-lead">
+                                    UniversalCamera nabízí všestranné možnosti manipulace. Podporuje vstupy z klávesnice, myši, dotyku a gamepadu bez nutnosti explicitní specifikace ovladače.
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="arcRotateCamera" class="uk-section">
+                <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">ArcRotateCamera</h3>
+                <div class="uk-section uk-section-small">
+                    <p class="uk-text-lead">ArcRotateCamera, jako efektivní varianta kamery, nabízí interaktivní manipulaci s polohou a natočením, a to pomocí horizontálních a vertikálních úhlů okolo
+                        definovaného bodu ve 3D scéně. Nabízí uživatelsky přívětivý způsob pohybu po
+                        scéně a jejího zkoumání díky možnosti plynulého otáčení a přibližování.
+                    </p>
+                    <article class="uk-article uk-padding-small">
+                        <h4 class="uk-article-title">Tvorba a ovládání</h4>
+                        <p class="uk-text-meta uk-text-uppercase"><a href="https://playground.babylonjs.com/#LW3JCS#5">Přejít na interaktivní ukázku v playground</a></p>  
+                        <div class="uk-child-width-1-2@m" uk-grid>
+                            <div>
+                                <p class="uk-text-lead">
+                                    Konstruktor objektu ArcRotateCameraje je odlišný od kamer předešlých, a to způsobem definování polohy kamery.
+                                </p>
+                                <pre class="language-js"><code>var cameraARC = new BABYLON.ArcRotateCamera(
+    "nazevKamery",
+    1/2 * Math.PI, /*úhel alpha v radiánech*/
+    1/4 * Math.PI, /*úhel beta v radiánech*/
+    10, /*radius*/
+    new BABYLON.Vector3(0, 0, -.5), /*target*/
+    scene
+);</code></pre>
+                                    <p>
+                                        Poloha kamery se u této kamery definuje vlastnostmi, mezi než patří úhly alpha a
+beta pro horizontální a vertikální natočení. Dále hodnota radius, která
+udává vzdálenost mezi kamerou a cílovým bodem (target), který je neměnný a kolem kterého se kamera otáčí a udržuje jej jako ohniskový bod. 
+                                    </p>
+                            </div>
+
+                            <div>
+                                <canvas class="uk-height-large" id="arc-rotate-camera" touch-action="none"></canvas>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div id="followCamera" class="uk-section">
+                <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">FollowCamera</h3>
+                <div class="uk-section uk-section-small">
+                    <p class="uk-text-lead">V Babylon.js je FollowCamera designována tak, aby sledovala a držela v zorném
+                        poli určitý cílový objekt během procházení 3D scénou. Jejím účelem je automaticky upravovat svou polohu a orientaci tak, aby cílový objekt zůstal v pohledu.
+                        Běžně se používá v aplikacích nebo hrách s pohledem třetí osoby.
+                    </p>
+                    <article class="uk-article uk-padding-small">
+                        <h4 class="uk-article-title">Tvorba a ovládání</h4>
+                        <p class="uk-text-lead">FollowCamera je dostupná ve dvou verzích.</p>
+                        <ul class="uk-child-width-1-2@m uk-list uk-list-decimal uk-list-collapse" uk-grid>
+                            <li>
+                                <p class="uk-text-lead">
+                                    Základní followCamera odvozená od třídy FreeCamera se společným konstruktorem rozšířeným o parametr
+                                    lockedTarget přiřazující mesh, který má sledovat. 
+                                </p>
+                                <pre class="language-js"><code>
+var followCamera = new BABYLON.FollowCamera(
+    "nazevKamery",
+    new BABYLON.Vector3(-10, 5, 0),
+    scene,
+    targetMesh
+);
+
+</code></pre>
+                                <p class="uk-text-lead">
+                                    Ovládání této kamery je převzaté od kamery FreeCamera.
+                                </p>
+                            </li>
+                            <li>
+                                <p class="uk-text-lead">
+                                    ArcFollowCamera odvozená od třídy ArcRotateCamera se společným konstruktorem s vyjímkou parametru target,
+                                    který nastavujeme na mesh, který má sledovat. 
+                                </p>
+                                <pre class="language-js"><code>var arcFollowCamera = new BABYLON.ArcFollowCamera(
+    "nazevKamery",
+    1/2 * Math.PI, /*úhel alpha v radiánech*/
+    1/4 * Math.PI, /*úhel beta v radiánech*/
+    10, /*rádius*/
+    targetMesh, /*instance target meshe*/
+    scene
+);</code></pre>
+                                <p class="uk-text-lead">
+                                    Ovládání této kamery je převzaté od kamery ArcRotateCamera.
+                                </p>
+                            </li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+
+            <div id="specializedCamera" class="uk-section">
+                <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">Specializované kamery</h3>
+                <div class="uk-section uk-section-small">
+                    <p class="uk-text-lead">Babylon.js dále nabízí specializované varianty kamer, mezi něž patří AnaglyphUniversalCamera pro vytváření anaglyfických efektů (3D brýle), StereoscopicUniversalCamera určenou pro stereoskopické zobrazení, nebo například VRDeviceOrientationFreeCamera vhodnou pro aplikace virtuální reality.
+                    </p>
+                </div>
+            </div>
+        </main>
+
+<script>
+    window.onload = function() {
+        var params = new URLSearchParams(window.location.search);
+        var id = params.get('id');
+        
+        var element = document.getElementById(id);
+        if(element) {
+            element.scrollIntoView();
+        }
+    }
+</script>
+
+<script>
+    const canvasFCScroll = document.getElementById('free-camera');
+    canvasFCScroll.addEventListener('wheel', (event) => {
+        if (event.target === canvasFCScroll) {
+
+            event.preventDefault();
+        }
+    });
+    const canvasUCScroll = document.getElementById('universal-camera');
+    canvasUCScroll.addEventListener('wheel', (event) => {
+        if (event.target === canvasUCScroll) {
+
+            event.preventDefault();
+        }
+    });
+    const canvasARCScroll = document.getElementById('arc-rotate-camera');
+    canvasARCScroll.addEventListener('wheel', (event) => {
+        if (event.target === canvasARCScroll) {
+
+            event.preventDefault();
+        }
+    });
+</script>
+
+<script>
+    window.addEventListener("resizeCamera", function () {
+            engineFC.resize();
+            engineUC.resize();
+            engineARC.resize();
+        });
+</script>
+
+<script src="../../ImportedPlaygrounds/kamera/freeCamera/freeCamera.js"></script>
+<script src="../../ImportedPlaygrounds/kamera/universalCamera/universalCamera.js"></script>
+<script src="../../ImportedPlaygrounds/kamera/arcRotateCamera/arcRotateCamera.js"></script>
+
+
+<script src="../../prism/prism.js"></script>
+
+</body>
+</html>

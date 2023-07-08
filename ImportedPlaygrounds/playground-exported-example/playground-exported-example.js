@@ -1,4 +1,5 @@
 var canvas = document.getElementById("playground-exported-example");
+
         var startRenderLoop = function (engine, canvas) {
             engine.runRenderLoop(function () {
                 if (sceneToRender && sceneToRender.activeCamera) {
@@ -34,6 +35,7 @@ var canvas = document.getElementById("playground-exported-example");
     return scene;
 };
                 window.initFunction = async function() {
+
                     
                     
                     var asyncEngineCreation = async function() {

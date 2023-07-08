@@ -27,7 +27,7 @@
     <script src="./UIKit/js/uikit.min.js"></script>
     <script src="./UIKit/js/uikit-icons.min.js"></script>
 
-    <title>Document</title>
+    <title>BabylonJS | Bakalářská práce Filipa Chytry</title>
 
     <link rel="stylesheet" href="./styles/main.css">
 </head>
@@ -44,20 +44,52 @@
                         <div class="uk-navbar-right">
                             <ul class="uk-navbar-nav">
                                 <li>
-                                    <a href="./Route/Implementace/index.html">Implementace</a>
+                                    <a href="./Route/Implementace/">Implementace</a>
                                     <div class="uk-navbar-dropdown">
                                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                                            <li><a href="./Route/Implementace/index.html?id=babylonjs-viewer">Babylon.js Viewer</a></li>
-                                            <li><a href="./Route/Implementace/index.html?id=babylonjs-playground">Babylon.js Playground</a></li>
-                                            <li><a href="./Route/Implementace/index.html?id=babylonjs-balicky">Babylon.js Balíčky</a></li>
+                                            <li><a href="./Route/Implementace/?id=babylonjs-viewer">Babylon.js Viewer</a></li>
+                                            <li><a href="./Route/Implementace/?id=babylonjs-playground">Babylon.js Playground</a></li>
+                                            <li><a href="./Route/Implementace/?id=babylonjs-balicky">Babylon.js Balíčky</a></li>
                                         </ul>
                                     </div>
                                 </li>
 
                                 <li>
-                                    <a href="./zakladni-scena.html">
-                                        Základní scéna
-                                    </a>
+                                    <a href="./Route/InicializaceScény/">Inicializace scény</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="./Route/InicializaceScény/?id=canvas">Canvas</a></li>
+                                            <li><a href="./Route/InicializaceScény/?id=engine">Engine</a></li>
+                                            <li><a href="./Route/InicializaceScény/?id=scene">Scene</a></li>
+                                            <li><a href="./Route/InicializaceScény/?id=renderLoop">RenderLoop</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="./Route/Kamery/">Kamery</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="./Route/Kamery/?id=freeCamera">FreeCamera</a></li>
+                                            <li><a href="./Route/Kamery/?id=universalCamera">UniversalCamera</a></li>
+                                            <li><a href="./Route/Kamery/?id=arcRotateCamera">ArcRotateCamera</a></li>
+                                            <li><a href="./Route/Kamery/?id=followCamera">FollowCamera</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="./Route/Světla/">Světla</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="./Route/Světla/?id=hemisphericLight">HemisphericLight</a></li>
+                                            <li><a href="./Route/Světla/?id=directionalLight">DirectionalLight</a></li>
+                                            <li><a href="./Route/Světla/?id=pointLight">PointLight</a></li>
+                                            <li><a href="./Route/Světla/?id=spotLight">SpotLight</a></li>
+                                            <li><a href="./Route/Světla/?id=lightProperties">Vlastnosti světel</a></li>
+
+                                        </ul>
+                                    </div>
                                 </li>
 
                                 <li>
@@ -115,7 +147,7 @@
     
                                 <p>Přidání Babylon Viewer na stránky je nejsnadnější způsob jak přidat a zobrazit 3D obsah na webové stránce.</p>
                                 <div>
-                                    <a class="uk-button uk-button-text" href="./Route/Implementace/index.html?id=babylonjs-viewer">Přejít na návod</a>
+                                    <a class="uk-button uk-button-text" href="./Route/Implementace/?id=babylonjs-viewer">Přejít na návod</a>
                                 </div>
                             </article>
                         </div>
@@ -129,7 +161,7 @@
     
                                 <p>Přidání Babylon Viewer na stránky je nejsnadnější způsob jak přiidání Babylon Viewer na stránky je nejsnadnější způsob jak přidat a zobrazit 3D dat a zobrazit 3D obsah na webové stránce.</p>
                                 <div>
-                                    <a class="uk-button uk-button-text" href="./Route/Implementace/index.html?id=babylonjs-playground">Přejít na návod</a>
+                                    <a class="uk-button uk-button-text" href="./Route/Implementace/?id=babylonjs-playground">Přejít na návod</a>
                                 </div>
                             </article>
                         </div>
@@ -143,7 +175,7 @@
     
                                 <p>Přidání Babylon Viewer na stránky je nejsnadnější způsob jak přidat a zobrazit 3D obsah na webové stránce.</p>
                                 <div>
-                                    <a class="uk-button uk-button-text" href="./Route/Implementace/index.html?id=babylonjs-balicky">Přejít na návod</a>
+                                    <a class="uk-button uk-button-text" href="./Route/Implementace/?id=babylonjs-balicky">Přejít na návod</a>
                                 </div>
                             </article>
                         </div>
@@ -152,30 +184,74 @@
             </div>
 
 
-            <div id="základníScéna" class="uk-child-width-1-2@m" uk-grid >
+            <div id="InicializaceScény" class="uk-child-width-1-2@m" uk-grid >
                 <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/zakladniScena.png');"></div>
                 <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
                     <article class="uk-article uk-padding-small">
 
-                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Základní scéna</a></h2>
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Inicializace Scény</a></h2>
                     
-                        <p class="uk-article-meta"><a href="#">Nastavení</a> | <a href="./Route/Implementace/index/babylonViewer.html?id=zakladniScena">Kamery</a> | <a href="#">Světla</a> | <a href="#">základní prostředí</a></p>
+                        <p class="uk-article-meta"><a href="./Route/InicializaceScény/?id=canvas">Canvas</a> | <a href="./Route/InicializaceScény/?id=engine">Engine</a> | <a href="./Route/InicializaceScény/?id=scene">Scene</a> | <a href="./Route/InicializaceScény/?id=renderLoop">RenderLoop</a></p>
                     
-                        <p class="uk-text-lead">Pokud se rozhodnete pro druhý, či třetí postup implementace, je potřeba jako první krok vytvořit scénu a nastavit několik základních prvků, bez kterých se žádná scéna neobejde.</p>
-
-                        <p>V této části se dozvíte jak </p>
+                        <p class="uk-text-lead">Ze všeho nejdříve je potřeba zajistit inicializace scény, která nám poslouží jakožto prostředí, ve kterém budou umístěny 3D objekty, kamery, světla a další prvky, které tvoří interaktivní virtuální prostředí.</p>
                         
                         <div class="uk-grid-small uk-child-width-auto" uk-grid>
                             <div>
-                                <a class="uk-button uk-button-text" href="./zakladni-scena.html">Přejít na návod</a>
+                                <a class="uk-button uk-button-text" href="./Route/InicializaceScény/">Přejít na návod</a>
                             </div>
                         </div>
                     </article>
                 </div>                
             </div>
 
+            <div class="uk-child-width-1-2@m" uk-grid >
+                <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
+                    <article class="uk-article uk-padding-small">
 
-            <diV class="uk-child-width-1-2@m" uk-grid >
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Kamery</a></h2>
+                    
+                        <p class="uk-article-meta"><a href="./Route/Kamery/?id=freeCamera">FreeCamera</a> | <a href="./Route/Kamery/?id=universalCamera">UniversalCamera</a> | <a href="./Route/Kamery/?id=arcRotateCamera">ArcRotateCamera </a> | <a href="./Route/Kamery/?id=followCamera">FollowCamera</a></p>
+                    
+                        <p class="uk-text-lead">Objekt kamera slouží jako oko, jehož prostřednictvím je scéna vizualizována
+                            a umožňuje tak uživatelům vnímat 3D prostředí z různých perspektiv.</p>
+                        
+                        <div class="uk-grid-small uk-child-width-auto" uk-grid>
+                            <div>
+                                <a class="uk-button uk-button-text" href="./Route/Kamery/">Přejít na návod</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-width-1-1 uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/BabylonJS-Kamera.png');"></div>
+
+                
+            </div>
+
+            <div class="uk-child-width-1-2@m" uk-grid >
+                <div class="uk-background-blend-darken uk-height-large uk-flex uk-flex-center uk-flex-middle uk-background-cover uk-background-top-center uk-inline" style="background-image: url('./assets/sceneScreens/BabylonJS-LightBulb.png');"></div>
+
+                <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
+                    <article class="uk-article uk-padding-small">
+
+                        <h2 class="uk-article-title"><a class="uk-link-reset" href="">Světla</a></h2>
+                    
+                        <p class="uk-article-meta"><a href="./Route/Světla/?id=hemisphericLight">HemisphericLight</a> | <a href="./Route/Světla/?id=directionalLight">DirectionalLight</a> | <a href="./Route/Světla/?id=pointLight">PointLight </a> | <a href="../Route/Světla/?id=spotLight">SpotLight</a> | <a href="../Route/Světla/?id=lightProperties">Vlastnosti</a> </p>
+                    
+                        <p class="uk-text-lead">Objekt kamera slouží jako oko, jehož prostřednictvím je scéna vizualizována
+                            a umožňuje tak uživatelům vnímat 3D prostředí z různých perspektiv.</p>
+                        
+                        <div class="uk-grid-small uk-child-width-auto" uk-grid>
+                            <div>
+                                <a class="uk-button uk-button-text" href="./Route/Kamery/">Přejít na návod</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                
+            </div>
+
+            <div class="uk-child-width-1-2@m" uk-grid >
                 <div class="uk-height-large uk-flex uk-flex-column uk-flex-center">
                     <article class="uk-article uk-padding-small">
 
@@ -243,7 +319,6 @@
 
     </div>
 
-    <script src="./ImportedPlaygrounds/desktop.js"></script>
     <script src="./prism/prism.js"></script>
 
 </body>

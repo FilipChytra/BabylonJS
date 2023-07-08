@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Babylon.js -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.2/dat.gui.min.js"></script>
+        <script src="https://assets.babylonjs.com/generated/Assets.js"></script>
+        <script src="https://preview.babylonjs.com/ammo.js"></script>
+        <script src="https://preview.babylonjs.com/cannon.js"></script>
+        <script src="https://preview.babylonjs.com/Oimo.js"></script>
+        <script src="https://preview.babylonjs.com/earcut.min.js"></script>
+        <script src="https://preview.babylonjs.com/babylon.js"></script>
+        <script src="https://preview.babylonjs.com/materialsLibrary/babylonjs.materials.min.js"></script>
+        <script src="https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proceduralTextures.min.js"></script>
+        <script src="https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js"></script>
+        <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.js"></script>
+        <script src="https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js"></script>
+        <script src="https://preview.babylonjs.com/gui/babylon.gui.min.js"></script>
+        <script src="https://preview.babylonjs.com/inspector/babylon.inspector.bundle.js"></script>
+
+    <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
+
+    <link href="../../prism/prism.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../../UIKit/css/uikit.min.css" />
+    <script src="../../UIKit/js/uikit.min.js"></script>
+    <script src="../../UIKit/js/uikit-icons.min.js"></script>
+
+    <title>BabylonJS | Inicializace Scény</title>
+
+    <link rel="stylesheet" href="../../styles/main.css">
+</head>
+<body>
+    <div id="content" class="uk-container uk-container-large" style="background-color: white;" >
+        <header uk-sticky="start: 200; animation: uk-animation-slide-top; sel-target: .uk-navbar-container; cls-active: uk-navbar-sticky; cls-inactive: uk-navbar-transparent uk-dark">
+            <nav class="uk-navbar-container uk-box-shadow-large">
+                <div class="uk-container">
+                    <div uk-navbar>
+                        <div class="uk-navbar-left">
+                            <a class="uk-navbar-item uk-logo" href="../../" aria-label="Back to Home">Babylon.js</a>
+                        </div>
+                        <div class="uk-navbar-right">
+                            <ul class="uk-navbar-nav">
+                                <li>
+                                    <a href="../Implementace/index.html">Implementace</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Implementace/index.html?id=babylonjs-viewer">Babylon.js Viewer</a></li>
+                                            <li><a href="../Implementace/index.html?id=babylonjs-playground">Babylon.js Playground</a></li>
+                                            <li><a href="../Implementace/index.html?id=babylonjs-balicky">Babylon.js Balíčky</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="#">Inicializace scény</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="#canvas">Canvas</a></li>
+                                            <li><a href="#engine">Engine</a></li>
+                                            <li><a href="#scene">Scene</a></li>
+                                            <li><a href="#renderLoop">RenderLoop</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="../Kamery/">Kamery</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Kamery/?id=freeCamera">FreeCamera</a></li>
+                                            <li><a href="../Kamery/?id=universalCamera">UniversalCamera</a></li>
+                                            <li><a href="../Kamery/?id=arcRotateCamera">ArcRotateCamera</a></li>
+                                            <li><a href="../Kamery//?id=followCamera">FollowCamera</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="../Světla/">Světla</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Světla/?id=hemisphericLight">HemisphericLight</a></li>
+                                            <li><a href="../Světla/?id=directionalLight">DirectionalLight</a></li>
+                                            <li><a href="../Světla/?id=pointLight">PointLight</a></li>
+                                            <li><a href="../Světla/?id=spotLight">SpotLight</a></li>
+                                            <li><a href="../Světla/?id=lightProperties">Vlastnosti světel</a></li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Mesh
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Materiály a textury
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="./zakladni-scena.html">
+                                        Animace
+                                    </a>
+                                </li>
+
+                            </ul>           
+                        </div>
+            
+                    </div>
+                </nav>
+        </header>
+
+        <main class="uk-container">
+
+
+            <div id="inicializaceSceny" class="uk-section">
+                <div class="uk-flex uk-flex-column uk-flex-center">
+                    <article class="uk-article uk-padding-small">
+
+                        <h2 class="uk-article-title">Inicializace scény</h2>
+                    
+                        <p class="uk-text-lead">Základní scéna v Babylon.js je prostředím, ve kterém jsou umístěny 3D objekty, kamery, světla a další prvky, které tvoří interaktivní virtuální prostředí. Je to jakési plátno, na kterém se vše vykresluje a uživatel může s grafikou interagovat. Scéna je základním stavebním blokem pro vytváření 3D aplikací a her.</p>
+
+                    </article>
+                </div>
+            </div>
+            
+
+            <div id="canvas" class="uk-section">
+                <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">Canvas</h3>
+                    <p class="uk-text-lead">Prvek canvas funguje jako hostitel kontextu WebGL, který umožňuje rozhraní Babylon.js komunikovat s příslušným grafickým hardwarem. Prostřednictvím kanvasu získává Babylon.js přístup k nízkoúrovňovým funkcím akcelerace
+                        GPU pro efektivní vykreslování 3D scény.
+                        <br><br>
+                        Dále umožňuje interakci uživatele s 3D scénou. Babylon.js poskytuje různé
+                        vstupní metody, jako jsou události myši, dotyku a klávesnice, které umožňují
+                        manipulaci s objekty a navigaci ve scéně. Připojením posluchačů událostí k
+                        prvku canvas lze zachytit vstup uživatele a spustit odpovídající akce v aplikaci
+                        Babylon.js.</p>
+                <div class="uk-section uk-section-small">
+                    <article class="uk-article uk-padding-small">
+    
+                        <h4 class="uk-article-title">Integrace v rámci HTML a CSS</h4>   
+                        <div class="uk-section uk-section-small ">             
+                            <p class="uk-text-lead">Kanvas se bez problémů integruje s ostatními prvky HTML a styly CSS. Plátno
+                                je možné umístit v rámci rozvržení webové stránky, použít styly a překrýt
+                                prvky HTML nad 3D scénou.
+                                <br><br>
+                                Při vytváření plátna je potřeba přiřadit mu jedinečný identifikátor pomocí 
+                                atributu elementu 'id', pomocí jehož bude v pozdější fázi možné v rámci JavaScriptu vytvořit instance elementu pro pozdější práci s ním.
+                                <br><br>
+                                Přidání kanvasu v rámci těla HTML:
+                                <pre class="language-js"><code>
+    &lt;canvas id="canvasId"&gt;&lt;/canvas&gt;
+
+    </code></pre>
+                            </p>
+                        </div>                                       
+                    </article>
+                    <article class="uk-article uk-padding-small">
+    
+                        <h4 class="uk-article-title">Velikost</h4>                    
+                        
+                        <div class="uk-section uk-section-small ">
+                            <p class="uk-text-lead">
+                                Pokud element &lt;canvas&gt; do kódu HTML pouze vložíte, aniž by se výslovně
+                                    nastavily jeho rozměry, bude se ve výchozím nastavení vykreslovat s těmito
+                                    počátečními rozměry 300x150 pixelů. Poměr stran plátna je také nastaven na
+                                    2:1 (šířka:výška).
+                                    <br><br>
+                                    Chceme-li však zajistit konzistentní a požadované rozměry plátna, obecně
+                                    se doporučuje explicitně nastavit atributy šířky a výšky nebo použít pravidla CSS pro prvek canvas. To umožní definovat velikost plátna podle vašich
+                                    konkrétních požadavků a hledisek návrhu.
+                            </p>
+                            <ul class="uk-child-width-1-2@m uk-list uk-list-decimal uk-list-collapse" uk-grid>
+                                <li>
+                                    <span class="uk-text-lead">Explicitní nastavení rozměrů skrze atributy elementu:</span>
+                                    <pre class="language-js"><code>
+&lt;canvas id="canvasId" width="800" height="600"&gt;&lt;/canvas&gt;
+
+</code></pre>
+                                </li>
+                                <li>
+                                    <span class="uk-text-lead">Explicitní nastavení rozměrů skrze styly elementu:</span>
+                                    <pre class="language-js"><code>
+#canvasId { width: 100%; height: 100%; }
+                                
+</code></pre>      
+                               </li>
+                            </ul>
+                        </div>
+
+                    </article>
+                    <article class="uk-article uk-padding-small">
+                        <div class="uk-section uk-section-small ">
+                            <h4 class="uk-article-title">Získání instance kanvasu v rámci JavaScriptu</h4>
+                                <p class="uk-text-lead">Pro získání instance plátna v jazyce JavaScript je možné použít různé metody v
+                                    závislosti na konkrétním případu použití a struktuře kódu. K získání prvku canvas na základě jeho ID lze použít metodu document.getElementById(). Tato
+                                    metoda umožňuje přístup k libovolnému prvku v DOM podle jeho jedinečného
+                                    atributu id.
+                                    
+                                </p>
+                                <pre class="language-js"><code>
+var canvas = document.getElementById('renderCanvasId');
+                            
+</code></pre>                            
+                                <p class="uk-text-lead" >
+                                    Lze také použít metodu document.querySelector(), která poskytuje flexibilnější způsob výběru prvků a to pomocí selektorů CSS. Na prvek canvas se
+                                    můžete odkázat pomocí jeho id, třídy nebo jiných atributů.
+                                </p>
+                                <pre class="language-js"><code>
+var canvas = document.querySelector('# renderCanvasId');
+                            
+</code></pre>
+
+                    </article>
+                </div>
+                
+            <div id="engine" class="uk-section">
+                <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">Engine</h3>
+                <div class="uk-section uk-section-small">
+                    <p class="uk-text-lead">Objekt Babylon.js Engine je klíčovou součástí frameworku. Slouží jako hlavní
+                        vykreslovací jádro odpovědné za správu nízkoúrovňových vykreslovacích operací a poskytuje infrastrukturu pro vykreslování 3D scén v reálném čase. Funguje jako most mezi kódem aplikace a základním grafickým hardwarem, pro jehož obsluhu využívá implicitně WebGL pro hardwarově akcelerované vykreslování.</p>
+                    <p class="uk-text-lead">Spravuje celou vykreslovací pipeline, která zahrnuje zpracování a vykreslení
+                        scény na cílové plátno. Řeší úlohy, jako je vymazání plátna, odesílání volání
+                        kreslení, použití transformací a vykreslování materiálů a shaderů.
+                    </p>
+                    <article class="uk-article uk-padding-small">
+                        <h4 class="uk-article-title"> Vytvoření třídy Engine</h4>   
+                            
+                            <p class="uk-text-lead">Konstruktor objektu Engine přijímá dva parametry. Prvním z nich je instance
+                                kanvasu, na který má engine provádět render. Druhým je boolean hodnota,
+                                která určuje použití antialiasingu. Antialiasing je technika, která se používá
+                                k vyhlazení grafiky a snížení výskytu pixelů vyhlazováním hran. Obvykle se
+                                nastavuje na hodnotu true pro lepší vizuální kvalitu.</p>
+                            <pre class="language-js"><code>
+var engine = new BABYLON.Engine(canvas, true);
+
+</code></pre>
+
+                    </article>
+                </div>
+            </div>
+
+            <div id="scene" class="uk-section">
+                <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">Scene</h3>
+                <div class="uk-section uk-section-small">
+                    <p class="uk-text-lead">Objekt Scene shromažďuje potřebné informace o kameře, světlech, sítích a
+                        materiálech ve scéně a komunikuje s přidruženým enginem Babylon.js, který
+                        provádí vlastní vykreslování na plátno. Řídí pořadí vykreslování, zpracovává
+                        viditelnost a vyřazování entit na základě jejich polohy a zorného pole kamery,
+                        aktualizuje všechny entity, které se v ní nacházejí, pro každý snímek procesu
+                        vykreslovací smyčky. To zahrnuje aktualizaci animací, kontrolu kolizí, zpracování uživatelských vstupů a další činnosti.</p>
+                    <article class="uk-article uk-padding-small">
+                        <h4 class="uk-article-title"> Vytvoření třídy Scene</h4>   
+                            
+                            <p class="uk-text-lead">Konstruktor Scene přijímá jeden parametr, a to instanci objektu Engine,
+                                ke kterému má tato scéna být přiřazena.</p>
+                            <pre class="language-js"><code>
+var scene = new BABYLON.Scene (engine);
+
+</code></pre>
+
+                    </article>
+                </div>
+            </div>
+
+            <div id="renderLoop" class="uk-section">
+                <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">Render loop</h3>
+                <div class="uk-section uk-section-small">
+                    <p class="uk-text-lead">Vykreslovací smyčka je v
+                        systému Babylon.js klíčovým konceptem. Poskytuje mechanismus pro
+                        průběžnou aktualizaci a vykreslování 3D scény, který vytváří iluzi pohybu a
+                        interaktivity. Vykreslovací smyčka je v podstatě funkce, která je opakovaně
+                        volána, obvykle synchronizovaně s obnovovací frekvencí obrazovky (obvykle
+                        60krát za sekundu), aby se zachovaly plynulé animace a interakce.</p>
+                    <article class="uk-article uk-padding-small">
+                        <h4 class="uk-article-title">Inicializace vykreslovací smyčky</h4>   
+                            
+                            <p class="uk-text-lead">V Babylon.js se vykreslovací smyčka vytváří prostřednictvím metody runRenderLoop() objektu Engine. Tato metoda přijímá jako argument funkci, která
+                                je volána při každém snímku. Uvnitř této funkce obvykle chceme zavolat metodu render() objektu Scene, která bude vykreslovat scénu po dobu jednoho
+                                snímku.</p>
+                            <pre class="language-js"><code>engine.runRenderLoop(function(){
+    scene.render();
+});
+</code></pre>
+
+                    </article>
+                </div>
+            </div>
+
+            <div id="zakladniScena" class="uk-section">
+                <div class="uk-flex uk-flex-column uk-flex-center">
+                    <article class="uk-article uk-padding-small">
+
+                        <h2 class="uk-article-title">Základní scéna</h2>
+                        <p class="uk-text-lead">Jelikož kódy přiložené výše jsou ukázkou pouhého základního nastavení kontextu vykreslování a scény,
+                            vykreslení scény by se nezdařilo.
+                        </p>
+                        <p class="uk-text-lead">Pro zobrazení čehokoli na obrazovce musíme do scény zahrnout a definovat
+                            další objekty. Mezi ně patří kamera (pro určení perspektivy, ze které se na
+                            scénu díváme), zdroje světla (pro osvětlení objektů ve scéně) a nějaký druh
+                            geometrie nebo objektu (aby bylo možné něco vykreslit). O kazdém z těcho objektů se dozvíte více
+                            v jednotlivých sekcích.
+                        </p>
+
+                        <article class="uk-article uk-padding-small">
+
+                            <h4 class="uk-article-title">Ukázka</h4>
+    
+                            <div class="uk-child-width-1-2@m" uk-grid>
+                                <div>
+                                    <p class="uk-text-lead">HTML:</p>
+                                    <pre class="language-html"><code><!--<canvas id=""></canvas>
+<script src="./zakladniScena.js"></script>--></code></pre>
+                                    <p class="uk-text-lead">JavaScript:</p>
+                                    <pre class="language-js"><code><!--var canvas = document.getElementById('renderCanvasId');
+var engine = new BABYLON.Engine(canvas, true);
+var scene = new BABYLON.Scene(engine);
+
+...
+//definice objektů jako kamera, světlo a polygonové sítě
+...
+
+engine.runRenderLoop(function(){
+    scene.render();
+});--></code></pre>
+                                </div>
+                                <div>
+                                    <canvas class="uk-height-large" id="zakladni-scena" touch-action="none"></canvas>
+                                </div>
+                                    
+    
+                            </article>
+
+                    </article>
+                </div>
+            </div>
+        </main>
+
+
+
+    </div>
+
+    <script>
+        window.onload = function() {
+            var params = new URLSearchParams(window.location.search);
+            var id = params.get('id');
+            
+            var element = document.getElementById(id);
+            if(element) {
+                element.scrollIntoView();
+            }
+        }
+    </script>
+
+    <script>
+        const canvasScroll = document.getElementById('zakladni-scena');
+        canvasScroll.addEventListener('wheel', (event) => {
+            if (event.target === canvasScroll) {
+
+                event.preventDefault();
+            }
+        });
+    </script>
+
+    <script src="../../ImportedPlaygrounds/zakladniScena/ukazka.js"></script>
+    <script src="../../prism/prism.js"></script>
+
+</body>
+</html>

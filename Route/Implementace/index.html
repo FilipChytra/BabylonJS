@@ -29,9 +29,7 @@
     <script src="../../UIKit/js/uikit.min.js"></script>
     <script src="../../UIKit/js/uikit-icons.min.js"></script>
 
-    <title>Document</title>
-
-    <link rel="stylesheet" href="../../styles/main.css">
+    <title>BabylonJS | Implementace</title>
 </head>
 <body>
     
@@ -41,12 +39,12 @@
                 <div class="uk-container">
                     <div uk-navbar>
                         <div class="uk-navbar-left">
-                            <a class="uk-navbar-item uk-logo" href="../../index.html" aria-label="Back to Home">Babylon.js</a>
+                            <a class="uk-navbar-item uk-logo" href="../../" aria-label="Back to Home">Babylon.js</a>
                         </div>
                         <div class="uk-navbar-right">
                             <ul class="uk-navbar-nav">
                                 <li>
-                                    <a href="implementace.html">Implementace</a>
+                                    <a href="#">Implementace</a>
                                     <div class="uk-navbar-dropdown">
                                         <ul class="uk-nav uk-navbar-dropdown-nav">
                                             <li><a href="#babylonjs-viewer">Babylon.js Viewer</a></li>
@@ -57,9 +55,41 @@
                                 </li>
 
                                 <li>
-                                    <a href="./zakladni-scena.html">
-                                        Základní scéna
-                                    </a>
+                                    <a href="../InicializaceScény/">Inicializace scény</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../InicializaceScény/?id=canvas">Canvas</a></li>
+                                            <li><a href="../InicializaceScény/?id=engine">Engine</a></li>
+                                            <li><a href="../InicializaceScény/?id=scene">Scene</a></li>
+                                            <li><a href="../InicializaceScény/?id=renderLoop">RenderLoop</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="../Kamery/">Kamery</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Kamery/?id=freeCamera">FreeCamera</a></li>
+                                            <li><a href="../Kamery/?id=universalCamera">UniversalCamera</a></li>
+                                            <li><a href="../Kamery/?id=arcRotateCamera">ArcRotateCamera</a></li>
+                                            <li><a href="../Kamery//?id=followCamera">FollowCamera</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <a href="../Světla/">Světla</a>
+                                    <div class="uk-navbar-dropdown">
+                                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                                            <li><a href="../Světla/?id=hemisphericLight">HemisphericLight</a></li>
+                                            <li><a href="../Světla/?id=directionalLight">DirectionalLight</a></li>
+                                            <li><a href="../Světla/?id=pointLight">PointLight</a></li>
+                                            <li><a href="../Světla/?id=spotLight">SpotLight</a></li>
+                                            <li><a href="../Světla/?id=lightProperties">Vlastnosti světel</a></li>
+
+                                        </ul>
+                                    </div>
                                 </li>
 
                                 <li>
@@ -328,10 +358,6 @@
                 <div class="uk-text-center uk-text-meta"><a href="https://doc.babylonjs.com/toolsAndResources/thePlayground" target="_blank">Odkaz na Playground v oficiální dokumentaci</a></div>
             </div>
 
-
-
-            <!-- Sekce Babylon Balíčky -->
-
             <div id="babylonjs-balicky" class="uk-section">
                 <h3 class="uk-heading-small uk-text-center uk-margin-medium-bottom">Babylon.js Balíčky</h3>
                 <div class="uk-section uk-section-small">
@@ -480,11 +506,9 @@
 
     <script>
         window.onload = function() {
-            // get the ID parameter from the URL
             var params = new URLSearchParams(window.location.search);
             var id = params.get('id');
             
-            // scroll to the element with the specified ID
             var element = document.getElementById(id);
             if(element) {
                 element.scrollIntoView();
